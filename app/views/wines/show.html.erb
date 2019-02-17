@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Wine:</strong>
-  <%= @wine.wine_id %>
-</p>
-
-<p>
   <strong>Wine name:</strong>
   <%= @wine.wine_name %>
 </p>
@@ -25,10 +20,9 @@
   <%= @wine.colour %>
 </p>
 
-<p>
-  <strong>Profile:</strong>
-  <%= @wine.profile_id %>
-</p>
+<strong>User Who Posted:</strong>
+<%= @wine.user_profile.first_name%>
+<br/>
 
 <%= image_tag @wine.image %>
 <br/>

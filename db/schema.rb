@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_144704) do
+ActiveRecord::Schema.define(version: 2019_02_17_041725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +41,10 @@ ActiveRecord::Schema.define(version: 2019_02_16_144704) do
     t.string "surname"
     t.date "dob"
     t.text "bio"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_profile_id"
+    t.bigint "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,15 +62,16 @@ ActiveRecord::Schema.define(version: 2019_02_16_144704) do
   end
 
   create_table "wines", force: :cascade do |t|
-    t.integer "wine_id"
     t.string "wine_name"
     t.integer "year"
     t.text "description"
     t.string "colour"
-    t.integer "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_profile_id"
+    t.bigint "wine_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "wines", "user_profiles", column: "user_profile_id"
 end
